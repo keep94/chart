@@ -24,11 +24,11 @@ f(5) = 677 = 26^2 + 1
 
 To make it easier to compute f(x), we compute function g such that
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=g%28x%5e2%29%3d%5bg%28x%29%5d%5e2%2B1&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
+g(x^2) = g(x)^2 + 1
 
 To compute g, we first move everythig over to one side giving
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=%5bg%28x%29%5d%5e2%2b1%2dg%28x%5e2%29%3d0&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
+g(x)^2 + 1 - g(x^2) = 0
 
 We can compute g as an infinite series one term at a time.
 
@@ -48,11 +48,11 @@ f(6) = g(a^8)
 
 and
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=f%283%2e5%29%3dg%28a%5e%7b%5csqrt%7b2%7d%7d%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
+f(3.5) = g(a^sqrt(2))
 
 and
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=f%283%2bx%29%3dg%28a%5e%7b2%5e%7bx%7d%7d%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
+g(3 + x) = g(a^(2^x))
 
 # work
 
@@ -61,7 +61,7 @@ f(x+1) = f(x)*f(x) + 1.
 
 and
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=f%28x%2d1%29%3d%5csqrt%7bf%28x%29%2d1%7d&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
+f(x - 1) = sqrt(f(x) - 1)
 
 # The python code
 
