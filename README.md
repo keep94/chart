@@ -10,10 +10,15 @@ f(0) = 0 and f(x + 1) = f(x)*f(x) + 1
 # Theory
 
 f(0) = 0
+
 f(1) = 1 = 0^2 + 1
+
 f(2) = 2 = 1^2 + 1
+
 f(3) = 5 = 2^2 + 1
+
 f(4) = 26 = 5^2 + 1
+
 f(5) = 677 = 26^2 + 1
 
 
@@ -34,19 +39,28 @@ We start with g(x) = x, plug it in, and then figure out what term we need to add
 We find a such that g(a) = 5 then
 
 f(3) = g(a) = 5
+
 f(4) = g(a^2) = 26
+
 f(5) = g(a^4) = 677
+
 f(6) = g(a^8)
+
 and
+
 ![equation](http://www.sciweavers.org/tex2img.php?eq=f%283%2e5%29%3dg%28a%5e%7b%5csqrt%7b2%7d%7d%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
+
 and
+
 ![equation](http://www.sciweavers.org/tex2img.php?eq=f%283%2bx%29%3dg%28a%5e%7b2%5e%7bx%7d%7d%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
 
 # work
 
 We compute a chart for f(x) where 1 <= x < 2. That is all we need since
 f(x+1) = f(x)*f(x) + 1.
+
 and
+
 ![equation](http://www.sciweavers.org/tex2img.php?eq=f%28x%2d1%29%3d%5csqrt%7bf%28x%29%2d1%7d&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
 
 # The python code
