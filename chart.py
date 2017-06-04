@@ -1,6 +1,17 @@
 import StringIO
 import math
 
+
+def ISolve(f, iLowerInclusive, iUpperExclusive):
+  while iLowerInclusive < iUpperExclusive:
+    mid = (iLowerInclusive + iUpperExclusive) / 2
+    if f(mid):
+      iUpperExclusive = mid
+    else:
+      iLowerInclusive = mid + 1
+  return iUpperExclusive
+
+
 def Solve(f, lower, upper):
   if f(lower) > f(upper):
     g = lambda x: -f(x)
@@ -16,15 +27,19 @@ def Solve(f, lower, upper):
       result += step
   return result
 
+
 def X2Plus1(x):
   return x - 1/2.0/x - 3/8.0/x**3 - 3/16.0/x**5 - 45/128.0/x**7 - 63/256.0/x**9 - 375/1024.0/x**11
 
+
 x5 = Solve(lambda x: X2Plus1(x) - 5.0, 5.0, 6.0)
+
 
 def Special(x):
   x -= 1.0
   y = X2Plus1(x5**(2**x))
   return math.sqrt(math.sqrt(y - 1.0) - 1.0)
+
 
 def Chart(f, start, incr, rowCount, colCount=1, xwidth=0, fwidth=0, xformat=str, fformat=str):
 

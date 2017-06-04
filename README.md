@@ -84,6 +84,37 @@ x must be between start and end.
 2.23606797749979
 ```
 
+## chart.ISolve(f, iLowerInclusive, iUpperExclusive)
+
+chart.ISolve solves discrete problems. chart.ISolve returns the smallest
+integer n such that iLowerInclusive <= n < iUpperExclusive and f(n) is true.
+f must have the property that if f(n) is true, then f(k) is true for all
+integers k where k >= n. iLowerInclusive and iUpperExclusive must be integers
+and iUpperExlusive > iLowerInclusive. If f(n) is false for all integers n
+where iLowerInclusive <= n < iUpperExclusive then chart.ISolve returns
+iUpperExclusive.
+
+The following example uses chart.ISolve to find that the 12th fibonacci
+numbr is the smallest 3 digit fibonacci number.
+
+```
+>>> def Fib(x):
+...   if x in [1, 2]:
+...     return 1
+...   return Fib(x-1) + Fib(x-2)
+...
+>>> chart.ISolve(lambda x: Fib(x) >= 100, 1, 10)
+10
+>>> chart.ISolve(lambda x: Fib(x) >= 100, 1, 20)
+12
+>>> Fib(12)
+144
+```
+
+Note that the first call to chart.ISolve returned iUpperExclusive signaling
+that we needed to increase our range to find the smallest 3 digit fibonacci
+number.
+
 ## chart.Chart(f, start, incr, rowCount, colCount=1, xwidth=0, fwidth=0, xformat=str, fformat=str)
 
 chart.Chart builds a chart for f. f is a function of one variable, x;
