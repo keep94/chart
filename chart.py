@@ -68,15 +68,12 @@ def Chart(f, start, incr, rowCount, colCount=1, xwidth=0, fwidth=0, xformat=str,
 
   rowTuples = []
   rowValues = range(2*colCount)
-  x = start
-  for _ in xrange(rowCount):
+  for j in xrange(rowCount):
     for i in xrange(colCount):
-      rowValues[2*i], xwidth = updateWidth(
-          xformat(x + incr*rowCount*i), xwidth)
-      rowValues[2*i + 1], fwidth = updateWidth(
-          fformat(f(x + incr*rowCount*i)), fwidth)
+      x = start + (rowCount*i + j)*incr
+      rowValues[2*i], xwidth = updateWidth(xformat(x), xwidth)
+      rowValues[2*i + 1], fwidth = updateWidth(fformat(f(x)), fwidth)
     rowTuples.append(tuple(rowValues))
-    x += incr
 
   rowspec = createRowSpec(colCount, '%'+str(xwidth)+'s', '%'+str(fwidth)+'s')
   header = createHeader(colCount, xwidth, fwidth)
