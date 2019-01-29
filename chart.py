@@ -1,5 +1,6 @@
 import StringIO
 import math
+import sys
 
 
 def ISolve(f, iLowerInclusive, iUpperExclusive):
@@ -42,6 +43,24 @@ def Special(x):
 
 
 def Chart(f, start, incr, rowCount, colCount=1, xwidth=0, fwidth=0, xformat=str, fformat=str):
+  output = StringIO.StringIO()
+  Chartf(
+      f,
+      start,
+      incr,
+      rowCount,
+      colCount=colCount,
+      xwidth=xwidth,
+      fwidth=fwidth,
+      xformat=xformat,
+      fformat=fformat,
+      output=output)
+  result = output.getvalue()
+  output.close()
+  return result
+
+
+def Chartf(f, start, incr, rowCount, colCount=1, xwidth=0, fwidth=0, xformat=str, fformat=str, output=sys.stdout):
 
   def fixFormat(formatFunc):
     if isinstance(formatFunc, basestring):
@@ -77,12 +96,8 @@ def Chart(f, start, incr, rowCount, colCount=1, xwidth=0, fwidth=0, xformat=str,
 
   rowspec = createRowSpec(colCount, '%'+str(xwidth)+'s', '%'+str(fwidth)+'s')
   header = createHeader(colCount, xwidth, fwidth)
-  output = StringIO.StringIO()
   print >>output, header
   for arow in rowTuples:
     print >>output, rowspec % arow
   print >>output, header
-  result = output.getvalue()
-  output.close()
-  return result
 

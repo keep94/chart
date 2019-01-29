@@ -262,3 +262,25 @@ This next example is 10^(x^(1/3))
 +---+------+---+------+---+------+---+------+---+------+
 
 ```
+
+## chart.Chartf(f, start, incr, rowCount, colCount=1, xwidth=0, fwidth=0, xformat=str, fformat=str, output=sys.stdout)
+
+chart.Chartf works like chart.Chart except instead of returning the chart
+as a string, it writes the chart directly to a file. The caller specifies
+the file using the output optional parameter. If the caller does not
+set the output parameter, chart.Chartf writes the chart to stdout.
+
+```
+>>> chart.Chartf(lambda x:x*x, 1, 1, 5)
++-+--+
+|1| 1|
+|2| 4|
+|3| 9|
+|4|16|
+|5|25|
++-+--+
+>>> with open('out.txt', 'w') as f:
+...   chart.Chartf(lambda x:x*x, 1, 1, 5, output=f)
+...
+>>>
+```
